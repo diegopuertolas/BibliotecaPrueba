@@ -9,4 +9,9 @@ public class Revista : Publicacion
     {
         NumeroEdicion = numeroEdicion;
     }
+
+    public override void ObtenerDescripcion()
+    {
+        Console.WriteLine($"{Titulo} · {Year} · {NumeroEdicion}");
+    }
 }

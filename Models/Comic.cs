@@ -9,4 +9,9 @@ public class Comic : Publicacion
     {
         Dibujante = dibujante;
     }
+
+    public override void ObtenerDescripcion()
+    {
+        Console.WriteLine($"{Titulo} · {Year} · {Dibujante}");
+    }
 }

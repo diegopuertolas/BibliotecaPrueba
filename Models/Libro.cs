@@ -9,4 +9,9 @@ public class Libro : Publicacion
     {
         Autor = autor;
     }
+
+    public override void ObtenerDescripcion()
+    {
+        Console.WriteLine($"{Titulo} · {Year} · {Autor}");
+    }
 }
