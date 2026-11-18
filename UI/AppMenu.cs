@@ -1,4 +1,5 @@
 using Biblioteca.Models;
+using Biblioteca.Utils;
 
 namespace Biblioteca.UI;
 
@@ -11,7 +12,7 @@ public static class AppMenu
         do
         {
             MostrarMenu();
-            option = ElegirOpcion();
+            option = ConsoleUtils.LeerInt("\nElija una opción: ");
 
             switch (option)
             {
@@ -55,21 +56,6 @@ public static class AppMenu
         Console.WriteLine("5. Ver estadísticas");
         Console.WriteLine("0. Salir");
     }
-
-    public static int ElegirOpcion()
-    {
-        Console.Write("Elija una opción: ");
-        var input = Console.ReadLine();
-
-        if (!int.TryParse(input, out var decision))
-        {
-            Console.WriteLine("\nOpción incorrecta");
-            return -1;
-        }
-
-        return decision;
-    }
-
     public static void MostrarPublicaciones(List<Publicacion> lista)
     {
         foreach (var publicacion in lista)
@@ -80,15 +66,7 @@ public static class AppMenu
 
     public static void BuscarPublicacionPorTitulo(List<Publicacion> lista)
     {   
-        Console.Write("Introduzca el título de la publicación: ");
-        var input = Console.ReadLine();
-
-        if (string.IsNullOrWhiteSpace(input))
-        {
-            Console.WriteLine("El formato del título no es el adecuado");
-            return;
-        }
-
+        var input = ConsoleUtils.LeerString("Introduzca un título: ");
         var found = false;
 
         foreach (var publicacion in lista)
@@ -105,33 +83,20 @@ public static class AppMenu
 
     public static void BuscarPublicacionesPosteriores(List<Publicacion> lista)
     {   
-        Console.Write("Introduzca el año: ");
-        var input = Console.ReadLine();
-
-        if (!int.TryParse(input, out var decision))
-        {
-            Console.WriteLine("El formato del año no es el adecuado");
-            return;
-        }
-
-        if (decision <= 0)
-        {
-            Console.WriteLine("\nLa publicación no puede pertener a un año inferior o igual a 0.");
-            return;
-        }
-
+        
+        var input = ConsoleUtils.LeerInt("\nIntroduzca el año: ");
         var found = false;
 
         foreach (var publicacion in lista)
         {
-            if (decision <= publicacion.Year)
+            if (input <= publicacion.Year)
             {
                 publicacion.ObtenerDescripcion();
                 found = true;
             }
         }
 
-        if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación posterior al año: {decision}");
+        if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación posterior al año: {input}");
     }
 
     public static void FiltrarPorLibros(List<Publicacion> lista)
