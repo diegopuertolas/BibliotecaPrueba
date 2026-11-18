@@ -23,6 +23,7 @@ foreach (var publicacion in publicaciones)
 
 BuscarPublicacionPorTitulo(publicaciones, "quijote");
 BuscarPublicacionesPosteriores(publicaciones, 1500);
+FiltrarPorLibros(publicaciones);
 
 static void BuscarPublicacionPorTitulo(List<Publicacion> lista, string titulo)
 {
@@ -66,4 +67,20 @@ static void BuscarPublicacionesPosteriores(List<Publicacion> lista, int year)
     }
 
     if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación posterior al año: {year}");
+}
+
+static void FiltrarPorLibros(List<Publicacion> lista)
+{
+    var found = false;
+
+    foreach(var publicacion in lista)
+    {
+        if (publicacion is Libro)
+        {
+            publicacion.ObtenerDescripcion();
+            found = true;
+        }
+    }
+
+    if (!found) Console.WriteLine($"No se ha encontrado ningun libro.");
 }
