@@ -15,13 +15,14 @@ var publicaciones = new List<Publicacion>
     spiderman
 };
 
+
 foreach (var publicacion in publicaciones)
 {
     publicacion.ObtenerDescripcion();
 }
 
-
 BuscarPublicacionPorTitulo(publicaciones, "quijote");
+BuscarPublicacionesPosteriores(publicaciones, 1500);
 
 static void BuscarPublicacionPorTitulo(List<Publicacion> lista, string titulo)
 {
@@ -43,4 +44,26 @@ static void BuscarPublicacionPorTitulo(List<Publicacion> lista, string titulo)
     }
 
     if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación con el título: {titulo}");
+}
+
+static void BuscarPublicacionesPosteriores(List<Publicacion> lista, int year)
+{
+    if (year <= 0)
+    {
+        Console.WriteLine("\nLa publicación no puede pertener a un año inferior o igual a 0.");
+        return;
+    }
+
+    var found = false;
+
+    foreach(var publicacion in lista)
+    {
+        if (year <= publicacion.Year)
+        {
+            publicacion.ObtenerDescripcion();
+            found = true;
+        }
+    }
+
+    if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación posterior al año: {year}");
 }
