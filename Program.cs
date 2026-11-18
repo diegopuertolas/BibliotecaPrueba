@@ -1,4 +1,5 @@
 ﻿using Biblioteca.Models;
+using Biblioteca.UI;
 
 var quijote = new Libro("Don Quijote de la Mancha", 1563, "Miguel de Cervantes");
 var extranjero = new Libro("El Extranjero", 1956, "Albert Camus");
@@ -15,6 +16,9 @@ var publicaciones = new List<Publicacion>
     spiderman
 };
 
+AppMenu.DisplayMenu(publicaciones);
+
+// El código anterior se ejecutará al cerrar el menú.
 
 foreach (var publicacion in publicaciones)
 {
