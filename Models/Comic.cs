@@ -1,10 +1,10 @@
 namespace Biblioteca.Models;
 
-public class Comics : Publicaciones
+public class Comic : Publicacion
 {
     public string Dibujante { get; set; }
 
-    public Comics(string titulo, int year, string dibujante)
+    public Comic(string titulo, int year, string dibujante)
         : base(titulo, year)
     {
         Dibujante = dibujante;

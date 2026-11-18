@@ -1,11 +1,11 @@
 namespace Biblioteca.Models;
 
-public abstract class Publicaciones
+public abstract class Publicacion
 {
     public string Titulo { get; set; }
     public int Year { get; set; }
 
-    public Publicaciones(string titulo, int year)
+    public Publicacion(string titulo, int year)
     {
         Titulo = titulo;
         Year = year;

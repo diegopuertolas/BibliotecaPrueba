@@ -1,10 +1,10 @@
 namespace Biblioteca.Models;
 
-public class Libros : Publicaciones
+public class Libro : Publicacion
 {
     public string Autor { get; set; }
 
-    public Libros(string titulo, int year, string autor)
+    public Libro(string titulo, int year, string autor)
         : base(titulo, year)
     {
         Autor = autor;
