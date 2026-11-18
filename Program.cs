@@ -24,6 +24,7 @@ foreach (var publicacion in publicaciones)
 BuscarPublicacionPorTitulo(publicaciones, "quijote");
 BuscarPublicacionesPosteriores(publicaciones, 1500);
 FiltrarPorLibros(publicaciones);
+EstadisticasPublicaciones(publicaciones);
 
 static void BuscarPublicacionPorTitulo(List<Publicacion> lista, string titulo)
 {
@@ -83,4 +84,26 @@ static void FiltrarPorLibros(List<Publicacion> lista)
     }
 
     if (!found) Console.WriteLine($"No se ha encontrado ningun libro.");
+}
+
+static void EstadisticasPublicaciones(List<Publicacion> lista)
+{
+    int numLibros = 0;
+    int numRevistas = 0;
+    int numComis = 0;
+
+    foreach(var publicacion in lista)
+    {
+        if (publicacion is Libro) numLibros++;
+        else if (publicacion is Revista) numRevistas++;
+        else numComis++;
+    }
+
+
+
+    Console.WriteLine("=== ESTADÍSTICAS ===");
+    Console.WriteLine($"Total publicaciones: {lista.Count}");
+    Console.WriteLine($"Comics: {numLibros}");
+    Console.WriteLine($"Revistas: {numRevistas}");
+    Console.WriteLine($"Cómics: {numComis}");    
 }
