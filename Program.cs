@@ -19,3 +19,28 @@ foreach (var publicacion in publicaciones)
 {
     publicacion.ObtenerDescripcion();
 }
+
+
+BuscarPublicacionPorTitulo(publicaciones, "quijote");
+
+static void BuscarPublicacionPorTitulo(List<Publicacion> lista, string titulo)
+{
+    if (string.IsNullOrWhiteSpace(titulo))
+    {
+        Console.WriteLine("El título no tiene el formato adecuaco");
+        return;
+    }
+
+    var found = false;
+    
+    foreach(var publicacion in lista)
+    {
+        if (publicacion.Titulo.Contains(titulo, StringComparison.OrdinalIgnoreCase) == true)
+        {
+            publicacion.ObtenerDescripcion();
+            found = true;
+        }
+    }
+
+    if (!found) Console.WriteLine($"No se ha encontrado ninguna publicación con el título: {titulo}");
+}
