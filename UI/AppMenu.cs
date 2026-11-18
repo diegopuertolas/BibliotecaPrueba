@@ -85,6 +85,12 @@ public static class AppMenu
     {   
         
         var input = ConsoleUtils.LeerInt("\nIntroduzca el año: ");
+
+        if (input < 0)
+        {
+            Console.WriteLine("El formato del año no es el adecuado.");
+            return;
+        }
         var found = false;
 
         foreach (var publicacion in lista)
