@@ -10,4 +10,6 @@ public abstract class Publicacion
         Titulo = titulo;
         Year = year;
     }
+
+    public abstract void ObtenerDescripcion();
 }
